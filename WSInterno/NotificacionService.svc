@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WSInterno.NotificacionService" CodeBehind="NotificacionService.svc.cs" %>

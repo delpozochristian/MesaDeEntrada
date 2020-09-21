@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="4b352241-b57c-442b-a8d5-10fafcadead9" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost/WSMailroom/NotificacionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NotificacionService2.xsd" MetadataType="Schema" ID="957949cb-7c16-41e1-a9ad-c2ba9b2b7e1b" SourceId="1" SourceUrl="http://localhost/WSMailroom/NotificacionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NotificacionService.xsd" MetadataType="Schema" ID="3bcc4e71-f22e-4530-8709-1e1902e6f5a4" SourceId="1" SourceUrl="http://localhost/WSMailroom/NotificacionService.svc?xsd=xsd2" />
+    <MetadataFile FileName="NotificacionService1.xsd" MetadataType="Schema" ID="e839a5b4-090e-448b-ad0c-89ad9e976671" SourceId="1" SourceUrl="http://localhost/WSMailroom/NotificacionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NotificacionService.disco" MetadataType="Disco" ID="e98512c7-8897-4e0c-b4e6-1bcb0411cc4a" SourceId="1" SourceUrl="http://localhost/WSMailroom/NotificacionService.svc?disco" />
+    <MetadataFile FileName="NotificacionService.wsdl" MetadataType="Wsdl" ID="07432257-5a1c-433b-aa9c-2d55a1d94aee" SourceId="1" SourceUrl="http://localhost/WSMailroom/NotificacionService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

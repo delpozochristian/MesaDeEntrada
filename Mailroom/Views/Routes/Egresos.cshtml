@@ -1,0 +1,158 @@
+﻿<div class="container" ng-controller="EgresosController as ctrl" style="background-color: white;border-radius:10px;">
+
+    <div id="divLoading"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <h2><i class="fas fa-external-link-alt"></i>&nbsp;Egresos</h2>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="form-group col-md-3 offset-lg-1">
+            <label for="txtNroSeguimento">Nro Seguimiento</label>
+            <input type="text" class="form-control" ng-model="find.nroSeguimiento" id="txtNroSeguimento" placeholder="Ingrese el nro de seguimiento">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="dtpFechaIngresoDesde">Fecha del Ingreso Desde</label>
+            <input ng-model="find.fechaDesde" type="text" class="form-control datepicker" id="dtpFechaIngresoDesde">
+        </div>
+        <div class="form-group col-md-3">
+            <label for="dtpFechaIngresoHasta">Fecha del Ingreso Hasta</label>
+            <input ng-model="find.fechaHasta" type="text" class="form-control datepicker" id="dtpFechaIngresoHasta">
+        </div>
+
+        <div class="form-group col-md-2 mt-4">
+            <button type="button" ng-click="GetIngreso()" class="btn btnOcasa">Buscar</button>
+            <button type="button" ng-click="LimpiarFiltros()" class="btn btnOcasa">Limpiar</button>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="ddlDestinatario">Destinatario </label>
+            <ui-select ng-model="item.destinatario" ng-change="ReloadCombosByDestinatario()" theme="select2" class="form-control" title="Seleccione el destinatario">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.NombreDeUsuario}}</ui-select-match>
+                <ui-select-choices refresh="GetDestinatarios($select.search)" refresh-delay="1" repeat="item in listDestinatarios | filter: $select.search">
+                    <div ng-bind-html="item.NombreDeUsuario | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="ddlProveedor">Proveedor </label>
+            <ui-select ng-model="item.proveedor" theme="select2" class="form-control" title="Seleccione el proveedor">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.RazonSocial}}</ui-select-match>
+                <ui-select-choices repeat="item in listProveedores | filter: $select.search">
+                    <div ng-bind-html="item.RazonSocial | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="txtAutorizado">Autorizado a Retirar</label>
+            <input type="text" class="form-control" ng-model="find.autorizado" id="txtAutorizado" placeholder="Ingrese el Autorizado a retirar">
+        </div>
+    </div>
+
+
+    <div class="row" ng-show="!finalizado">
+        <div class="col-lg-6">
+            <h6 class="mt-2">Ingresos encontrados</h6>
+        </div>
+        <div class="col-lg-6 text-right">
+            <button type="button" ng-click="MarcarTodos()" class="btn btnOcasa">Marcar todos</button>
+        </div>
+    </div>
+
+    <div class="row" ng-show="!finalizado">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nro. Seguimiento</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Proveedor</th>
+                            <th scope="col">Autorizado</th>
+                            <th scope="col">Destinatario</th>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="itemE in itemsEncontrados">
+                            <td>{{itemE.NroSeguimiento}}</td>
+                            <td>{{itemE.Fecha}}</td>
+                            <td>{{itemE.TipoProducto}}</td>
+                            <td>{{itemE.Proveedor}}</td>
+                            <td>{{itemE.AutorizadoRetirar}}</td>
+                            <td>{{itemE.Destinatario}}</td>
+                            <td>{{itemE.Sector}}</td>
+                            <td>{{itemE.Direccion}}</td>
+                            <td>{{itemE.Estado}}</td>
+                            <td><input ng-if="itemE.IdEstado == 3" id="{{itemE.IdIngreso}}_{{itemE.NroSeguimiento}}" class="checkboxes" type="checkbox" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row bg-light">
+        <div class="col-lg-12 text-center">
+            <button type="button" ng-click="AgregarIngreso()" class="btn btnOcasa">Agregar</button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h6>Ingresos a entregar</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-striped ">
+                    <thead>
+                        <tr>
+                            <th scope="col">Nro. Seguimiento</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">Proveedor</th>
+                            <th scope="col">Autorizado</th>
+                            <th scope="col">Destinatario</th>
+                            <th scope="col">Sector</th>
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="itemEn in itemsEntregar">
+                            <td>{{itemEn.NroSeguimiento}}</td>
+                            <td>{{itemEn.Fecha}}</td>
+                            <td>{{itemEn.TipoProducto}}</td>
+                            <td>{{itemEn.Proveedor}}</td>
+                            <td>{{itemEn.AutorizadoRetirar}}</td>
+                            <td>{{itemEn.Destinatario}}</td>
+                            <td>{{itemEn.Sector}}</td>
+                            <td>{{itemEn.Direccion}}</td>
+                            <td>{{itemEn.Estado}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row bg-light mb-4">
+        <div class="col-lg-12 text-center">
+            <button type="button" ng-show="!finalizado" ng-click="Entregar()" class="btn btnOcasa">Entregar</button>
+            &nbsp;
+            <button type="button" ng-show="!finalizado" ng-click="Limpiar()" class="btn btnOcasa">Limpiar</button>
+            &nbsp;
+            <a ng-show="finalizado" target="_blank" class="btn btnOcasa" href="{{rutaDescargaComprobante}}{{item.idEntrega}}" title="Ver Comprobante Egreso">Ver Comprobante</a>
+            &nbsp;
+            <button type="button" ng-show="finalizado" ng-click="Limpiar()" class="btn btnOcasa">Nuevo</button>
+        </div>
+    </div>
+</div>

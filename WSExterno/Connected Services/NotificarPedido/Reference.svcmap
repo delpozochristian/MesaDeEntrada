@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9cb2608a-f693-4493-afa0-f54a94553964" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="NotificacionService.xsd" MetadataType="Schema" ID="1a271709-97f0-4a93-a6cf-673951c49813" SourceId="1" SourceUrl="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc?xsd=xsd1" />
+    <MetadataFile FileName="NotificacionService.disco" MetadataType="Disco" ID="3846d8b4-55df-45d6-bad6-48686624da5c" SourceId="1" SourceUrl="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc?disco" />
+    <MetadataFile FileName="NotificacionService1.xsd" MetadataType="Schema" ID="8c15a54d-d369-448a-b22d-f10551603f42" SourceId="1" SourceUrl="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc?xsd=xsd0" />
+    <MetadataFile FileName="NotificacionService.wsdl" MetadataType="Wsdl" ID="21915d0e-85ae-42f8-abb4-89f66278d892" SourceId="1" SourceUrl="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc?wsdl" />
+    <MetadataFile FileName="NotificacionService2.xsd" MetadataType="Schema" ID="78646f11-bcfd-4c89-b628-54b0fb997b28" SourceId="1" SourceUrl="http://w3it.fortiddns.com:9193/WSMailroom/NotificacionService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

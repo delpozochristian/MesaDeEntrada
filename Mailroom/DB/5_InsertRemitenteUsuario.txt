@@ -1,0 +1,29 @@
+﻿
+INSERT INTO Sectores
+values ('MESA','MESA DE ENTRADA');
+
+insert into Direcciones
+values ('00744000000064901020003170040102000317','MESA DE ENTRADA TORRE');
+
+INSERT INTO [dbo].[Destinatarios]
+           ([Id]
+           ,[NombreDeUsuario]
+           ,[IdSucursal]
+           ,[DescripcionSucursal]
+           ,[IdSector]
+           ,[DescripcionSector]
+           ,[IdBandeja]
+           ,[DescripcionBandeja]
+           ,[IdCentroDeCostos]
+           ,[DescripcionCentroDeCostos])
+     VALUES
+           ('000MDE'
+           ,'000 - MESA ENTRADA TORRE'
+           ,'00000006490102000317'
+           ,'MESA ENTRADA TORRE BANCO MACRO'
+           ,'MESA'
+           ,'MESA DE ENTRADA'
+           ,'00744000000064901020003170040102000317'
+           ,'MESA DE ENTRADA TORRE'
+           ,'000000010102000317'
+           ,'MESA DE ENTRADA');

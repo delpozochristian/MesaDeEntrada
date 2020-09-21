@@ -1,0 +1,81 @@
+﻿﻿<!DOCTYPE html>
+<html lang="en" ng-app="core" ng-controller="IndexController">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link rel="icon" type="image/png" href="/Content/img/fav.png" />
+    <!-- Bootstrap CSS -->
+    <script defer src="~/Content/js/all.js"></script>
+    <link type="text/css" rel="stylesheet" media="screen,projection" />
+    <title>OCASA</title>
+</head>
+<body>
+    <div id="mySidenav" class="sidenav" style="z-index:500; background-color:#ffffff;">
+        <div class="pt-4"></div>
+        <a ng-click="CloseNav()" style="font-size:15px;" href="{{recepcionLink}}"><i class="fas fa-archive"></i>&nbsp;Recepción</a>
+        <a ng-click="CloseNav()" style="font-size:15px;" href="{{egresosLink}}"><i class="fas fa-external-link-alt"></i>&nbsp;Egresos</a>
+        <a ng-click="CloseNav()" style="font-size:15px;" href="{{reportesLink}}"><i class="far fa-file-alt"></i>&nbsp;Consultas</a>
+        <a ng-click="CloseNav()" style="font-size:15px;" href="{{proveedorLink}}"><i class="fas fa-user"></i>&nbsp;Proveedores</a>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="z-index:501;">
+        <span class="mr-3 mb-auto" style="font-size:30px;cursor:pointer" ng-click="OpenCloseNav()">&#9776;</span>
+        <div class="navbar-collapse" id="navbarTogglerDemo01">
+            <a class="navbar-brand" href="{{dashboardLink}}"><div class="hidden-md-down"><img src="~/Content/img/ocasa.png" class="img-fluid" alt="Responsive image" style="width:150px; height:44px;"></div></a>
+            <ul class="navbar-nav ml-auto hidden-md-down">
+                <li class="nav-item">
+                    <a ng-click="CloseNav()" class="btn btn-primary btn-sm" style="background-color: #33BDC2; border-color: #33BDC2" {{recepcionActive}} href="{{recepcionLink}}">Recepción</a>
+                </li>
+                &nbsp;
+                <li class="nav-item">
+                    <a ng-click="CloseNav()" class="btn btn-primary btn-sm" style="background-color: #33BDC2; border-color: #33BDC2" watch {{etiquetaActive}} href="{{egresosLink}}">Egresos</a>
+                </li>
+                &nbsp;
+                <li class="nav-item">
+                    <a ng-click="CloseNav()" class="btn btn-primary btn-sm" style="background-color: #33BDC2; border-color: #33BDC2" watch {{remitoActive}} href="{{reportesLink}}">Consultas</a>
+                </li>
+                &nbsp;
+                <li class="nav-item">
+                    <a ng-click="CloseNav()" class="btn btn-primary btn-sm" style="background-color: #33BDC2; border-color: #33BDC2" watch {{impresionnActive}} href="{{proveedorLink}}">Proveedores</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <div class="MainColorOcasa nav-link"><i class="fas fa-user"></i>&nbsp;{{nombreUsuario}}</div>
+                </li>
+                <li class="nav-item ">
+                    <a class="MainColorOcasa nav-link " href="" ng-click="CloseSession()">Salir</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <br>
+
+    <div ng-view></div>
+    @Styles.Render("~/Content/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+
+
+    @Scripts.Render("~/Angular/js")
+
+    @Styles.Render("~/AngularVendor/css")
+    @Scripts.Render("~/AngularVendor/js")
+    @Scripts.Render("~/Pagination/js")
+
+
+    @Scripts.Render("~/bundles/uibootstrapjs")
+    @Scripts.Render("~/angular/core")
+    @Styles.Render("~/Common/css")
+    @Scripts.Render("~/Common/js")
+
+
+
+
+    @Styles.Render("~/Vendor/css")
+    @Scripts.Render("~/Vendor/js")
+    @Scripts.Render("~/Vendor/js/es")
+</body>
+</html>

@@ -1,0 +1,50 @@
+﻿<div class="row container-fluid" ng-controller="DashboardController">
+    <div class="col-sm" style="padding-bottom: 10px;">
+        <div class="card ">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="kpiCifra">{{item.CantidadRecepciones}}</div>
+                    <hr>
+                    <a href="{{linkReportesIngresos}}"> <h5>Total Ingresos</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col-sm" style="padding-bottom: 10px;">
+        <div class="card ">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="kpiCifra">{{item.CantidadEgresos}}</div>
+                    <hr>
+                    <a href="{{linkReportesEgresos}}"> <h5>Total Egresos</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col-sm" style="padding-bottom: 10px;">
+        <div class="card ">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="kpiCifra">{{item.CantidadCorrespondencia}}</div>
+                    <hr>
+                    <a href="{{linkReportesCorrespondencia}}"> <h5>Total Correspondencia</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="col-sm" style="padding-bottom: 10px;">
+        <div class="card ">
+            <div class="card-body">
+                <div class="text-center">
+                    <div class="kpiCifra">{{item.CantidadPaquetes}}</div>
+                    <hr>
+                    <a href="{{linkReportesPaquetes}}"><h5>Total Paquetes</h5></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>

@@ -1,0 +1,34 @@
+﻿<div class="container" ng-controller="ProveedoresController" style="background-color: white;border-radius:10px;">
+    <div id="divLoading"></div>
+
+    <div class="row">
+        <h2><i class="fas fa-user"></i>&nbsp;Proveedores</h2>
+    </div>
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="sample1">Razón Social</label>
+            <input type="text" class="form-control" ng-model="proveedor.RazonSocial" id="txtNombre">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="sample1">CUIT</label>
+            <input type="text" class="form-control" ng-model="proveedor.Cuit" id="txtNombre">
+        </div>
+    </div>
+    <div class="row" ng-show="!alta">
+        <div class="form-group col-md-6">
+            <label for="sample1">Fecha Alta</label>
+            <input type="text" disabled class="form-control" ng-model="proveedor.FechaAltaString" id="txtNombre">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="sample1">Fecha Baja</label>
+            <input type="text" disabled class="form-control" ng-model="proveedor.FechaBajaString" id="txtNombre">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 text-right">
+            <button type="button" ng-click="GuardarProveedor()" class="btn btnOcasa">Grabar</button>
+            &nbsp;
+            <a href="{{rutaProveedores}}" class="btn btnOcasa">Cancelar</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DB.ViewModels.IngresoResponseVisible>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExportView</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr style="color: white; background-color:blue">
+                <th>
+                    @Html.DisplayNameFor(model => model.NroSeguimiento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TipoProducto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Proveedor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Destinatario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sector)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Canalizacion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estado)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NroSeguimiento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TipoProducto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Proveedor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Destinatario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sector)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Canalizacion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</body>
+</html>

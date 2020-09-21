@@ -1,0 +1,141 @@
+﻿<div class="container" ng-controller="RecepcionController as ctrl" style="background-color: white;border-radius:10px;">
+    <div id="divLoading"></div>
+    <div class="row">
+        <h2><i class="fas fa-archive"></i>&nbsp;Recepción</h2>
+    </div>
+    <div class="row py-0">
+        <div class="col-lg-12">
+            <h6>Seleccione un producto</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="btn-group btn-group-toggle" id="tipoProducto" data-toggle="buttons">
+                <label class="btn btnOcasa active" ng-click="SelectTipoProducto(1)">
+                    <input type="radio" name="options" ng-model="item.tipoProducto" value="1" checked>Sobres
+                </label>
+                <label class="btn btnOcasa" ng-click="SelectTipoProducto(2)">
+                    <input type="radio" name="options" ng-model="item.tipoProducto" value="2"> Paquetes
+                </label>
+                <label class="btn btnOcasa" ng-click="SelectTipoProducto(3)">
+                    <input type="radio" name="options" ng-model="item.tipoProducto" value="3"> Bolsines
+                </label>
+            </div>
+        </div>
+
+        <div class="col-lg-6 text-right">
+            <div class="form-check form-check-inline mt-2">
+                <input type="checkbox" ng-model="item.imprimirEtiqueta" class="form-check-input" id="chkImprimirEtiqueta">
+                <label class="form-check-label" for="chkImprimirEtiqueta">Imprimir Etiqueta</label>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-3">
+            <label for="ddlProveedores">Proveedores (*)</label>
+            <ui-select ng-model="item.proveedores" theme="select2" class="form-control" title="Seleccione el proveedor">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.RazonSocial}}</ui-select-match>
+                <ui-select-choices refresh="GetProveedores($select.search)" refresh-delay="1" repeat="item in listProveedores | filter: $select.search">
+                    <div ng-bind-html="item.RazonSocial | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-lg-3">
+            <label for="txtNroSeguimento">Nro Seguimiento</label>
+            <input type="text" class="form-control" ng-model="item.nroSeguimiento" id="txtNroSeguimento" ng-blur="Consultar()" placeholder="Ingrese el nro de seguimiento">
+
+        </div>
+        <div ng-show="false" class="col-lg-3">
+            <label for="txtNroOrdenCompra">Nro Orden de compra</label>
+            <input type="text" class="form-control" ng-model="item.nroOrdenCompra" id="txtNroOrdenCompra" placeholder="Ingrese el nro de orden de compra">
+        </div>
+        <div ng-show="false" class="col-lg-3">
+            <label for="txtNroRemito">Nro Remito</label>
+            <input type="text" ng-model="item.nroRemito" class="form-control" id="txtNroRemito" placeholder="Ingrese el nro de remito">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label for="ddlDestinatario">Destinatario </label>&nbsp;<a href="" ng-click="LimpiarComboDestinatario()"><i style="color:gray" class="fas fa-trash"></i></a>
+            <ui-select ng-model="item.destinatario" ng-change="ReloadCombosByDestinatario()" theme="select2" class="form-control" title="Seleccione el destinatario">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.NombreDeUsuario}}</ui-select-match>
+                <ui-select-choices refresh="GetDestinatarios($select.search)" refresh-delay="1" repeat="item in listDestinatarios | filter: $select.search">
+                    <div ng-bind-html="item.NombreDeUsuario | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-lg-3">
+            <label for="ddlSector">Sector </label>&nbsp;<a href="" ng-click="LimpiarComboSector()"><i style="color:gray" class="fas fa-trash"></i></a>
+            <ui-select ng-model="item.sector" ng-change="ReloadCombosBySector()" theme="select2" class="form-control" title="Seleccione el sector">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.Descripcion}}</ui-select-match>
+                <ui-select-choices refresh="GetSectores($select.search)" refresh-delay="1" repeat="item in listSector | filter: $select.search">
+                    <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-lg-3">
+            <label for="ddlDireccion">Dirección </label>&nbsp;<a href="" ng-click="LimpiarComboDireccion()"><i style="color:gray" class="fas fa-trash"></i></a>
+            <ui-select ng-model="item.direccion" allow-clear="true" ng-change="ReloadCombosByDireccion()" theme="select2" class="form-control" title="Seleccione la dirección">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.Descripcion}}</ui-select-match>
+                <ui-select-choices refresh="GetDirecciones($select.search)" refresh-delay="1" repeat="item in listDireccion | filter: $select.search">
+                    <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+        <div class="col-lg-3">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <label for="ddlCanalizacion">Canalización </label>&nbsp;<a href="" ng-click="LimpiarComboCanalizacion()"><i style="color:gray" class="fas fa-trash"></i></a>
+            <ui-select ng-model="item.canalizacion" theme="select2" class="form-control" title="Seleccione la canalización">
+                <ui-select-match placeholder="Buscar...">{{$select.selected.Descripcion}}</ui-select-match>
+                <ui-select-choices refresh="GetCanalizaciones($select.search)" refresh-delay="1" repeat="item in listCanalizacion">
+                    <div ng-bind-html="item.Descripcion | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="form-check form-check-inline">
+                <input type="checkbox" ng-model="item.escaneoPieza" class="form-check-input" id="chkEscaneoPieza">
+                <label class="form-check-label" for="chkEscaneoPieza">Escaneo de pieza</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Digitalización de Pieza</span>
+                </div>
+                <div class="custom-file">
+                    <input type="file" watch class="custom-file-input" id="fileUpload">
+                    <label class="custom-file-label" for="fileUpload">{{fileName}}</label>
+                </div>
+                &nbsp;
+                <button ng-show="botonSubir" type="button" ng-click="uploadFile()" class="btn btn-btnOcasa">Subir</button>
+            </div>
+
+        </div>
+    </div>
+    <div class="row py-0" ng-show="fileUploaded">
+        <div class="col-lg-12">
+            <p>Archivo subido</p>
+        </div>
+    </div>
+    <div class="row" ng-show="fileUploaded">
+        <div class="col-lg-12">
+            <span class="badge badge-success" style="font-size:15px;">{{item.FileName}}</span>
+        </div>
+    </div>
+    <div class="row bg-light">
+        <div class="col-lg-12 text-center">
+            <button type="button" ng-click="Guardar()" class="btn btnOcasa">Grabar</button>
+            <button type="button" ng-click="Limpiar()" class="btn btnOcasa">Limpiar</button>
+        </div>
+    </div>
+</div>

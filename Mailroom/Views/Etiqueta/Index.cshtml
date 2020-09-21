@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html lang="en" ng-app="core" ng-controller="EtiquetaController">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link rel="icon" type="image/png" href="/mailroom/Content/img/fav.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" media="screen,projection" />
+    <title>OCASA</title>
+</head>
+<body>
+    <div id="divLoading"></div>
+    <table>
+        <tr>
+            <td style='padding:10px; text-align:left; font-size:15px; font-family:Arial,Helvetica;' colspan="2">
+                DESTINATARIO: {{item.destinatario}}<br />DIRECCIÓN: {{item.direccion}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <img src='data:image/png;base64,{{item.barcode}}' onload="window.print();" width="300" />
+            </td>
+            <td>
+                <div class="float-right hide-print">
+                    <a class="float-right" href="javascript:window.print();"><h4><i class="material-icons">print</i>&nbsp;</h4></a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Styles.Render("~/Content/bootstrap")
+
+
+    @Scripts.Render("~/Angular/js")
+
+    @Scripts.Render("~/AngularVendor/js")
+    @Styles.Render("~/AngularVendor/css")
+    @Scripts.Render("~/Pagination/js")
+
+
+    @Scripts.Render("~/bundles/uibootstrapjs")
+    @Scripts.Render("~/angular/core")
+    @Styles.Render("~/Common/css")
+    @Scripts.Render("~/Common/js")
+
+
+    @Styles.Render("~/Vendor/css")
+    @Scripts.Render("~/Vendor/js")
+</body>
+</html>

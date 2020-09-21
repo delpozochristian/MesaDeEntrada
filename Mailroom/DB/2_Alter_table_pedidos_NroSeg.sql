@@ -1,0 +1,1 @@
+ALTER TABLE dbo.Pedidos ALTER COLUMN NroSeguimiento NVARCHAR(50) NULL;
